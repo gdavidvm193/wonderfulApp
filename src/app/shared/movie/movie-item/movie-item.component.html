@@ -1,0 +1,19 @@
+<div class="card mt-2" (click)=goDetail(movie) *ngIf="(list != 'top')?true:false">
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <h2>{{movie.title}}</h2>
+            <p>{{movie.release | date:'short'}}</p>
+        </blockquote>
+    </div>
+</div>
+<div class="mt-2" *ngIf="(list === 'top')?true:false">
+    <div class="display-type">
+        <blockquote>
+            <img class="card-image" src="{{movie.image}}">
+        </blockquote>
+        <blockquote class="blockquote mb-0">
+            <h2>{{movie.title}}</h2>
+            <p>{{movie.release | date:'short'}}</p>
+        </blockquote>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid container-info">
+    <div class="row">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="col-6 left">
+                        <h5>Add Movie</h5>
+                    </div>
+                    <div class="col-6 right">
+                        <button class="btn btn-info float-right" (click)="saveMovie(movie)">Save Movie</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="superior-form">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="movieTitle">Movie Title</label>
+                                <input type="text" class="form-control" id="movieTitle" [(ngModel)]="movie.title"
+                                    placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="releaseDate">Release Date</label>
+                                <input type="date" class="form-control" id="releaseDate" [(ngModel)]="movie.release">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="image">Movie Image</label>
+                                <input type="file" class="form-control" id="image" [(ngModel)]="movie.image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" rows="3"
+                            [(ngModel)]="movie.description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

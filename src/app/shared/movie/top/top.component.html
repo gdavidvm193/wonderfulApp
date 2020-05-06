@@ -1,0 +1,13 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid container-info">
+    <div class="row">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
+            <h2>Top 5 Movies</h2>
+            <div class="card text-center">
+                <ng-template ngFor let-movieItem [ngForOf]="movies">
+                    <app-movie-item [movie]="movieItem" [list]="'top'"></app-movie-item>
+                </ng-template>
+            </div>
+        </main>
+    </div>
+</div>

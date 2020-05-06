@@ -1,0 +1,19 @@
+<div class="col-12 btn-position">
+    <button class="btn btn-info" [routerLink]="['/addMovie']">Add new Movie</button>
+</div>
+<div class="col-12">
+    <div class="card mt-2" *ngIf="movie!==undefined">
+        <div class="card-header">
+            <div class="col-6 left">
+                <h5>{{movie.title | titlecase}}</h5>
+            </div>
+            <div class="col-6 right">
+                {{movie.release | date:'short'}}
+            </div>
+        </div>
+        <div class="card-body">
+            <img class="card-image" src="{{movie.image}}">
+            <p class="card-text">{{movie.description}}</p>
+        </div>
+    </div>
+</div>

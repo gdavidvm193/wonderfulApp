@@ -1,0 +1,20 @@
+
+.container-info{
+    margin-top: 5rem;
+}
+.card-header{
+    display: flex;
+    .left{
+        text-align: initial;
+    }
+    .right{
+        text-align: end;
+    }
+}
+
+.card-body{
+    text-align: initial;
+    .superior-form{
+        display: flex;
+    }
+}

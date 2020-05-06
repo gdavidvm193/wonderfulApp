@@ -1,0 +1,10 @@
+<ng-template ngFor let-movieItem [ngForOf]="movies">
+    <app-movie-item [movie]="movieItem" [movie]="'item'"></app-movie-item>
+</ng-template>
+<div class="card mt-2" *ngIf="movies.length === 0">
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Soon you will see your movies here, go add!</p>
+        </blockquote>
+    </div>
+</div>
