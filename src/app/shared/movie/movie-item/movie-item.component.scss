@@ -1,3 +1,10 @@
 .display-type{
     display:flex;
 }
+
+.card-body{
+    display: -webkit-inline-box;
+    .card-image{
+        cursor: pointer;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { Movie } from '../../interfaces/movie.interface';
 import { MovieService } from '../../services/movie.service';
 
@@ -15,5 +15,9 @@ export class MovieItemComponent {
 
   goDetail(movie: Movie) {
     this.movieService.emitClick(movie);
+  }
+
+  delete(movie: Movie) {
+    this.movieService.deleteMovie(movie);
   }
 }

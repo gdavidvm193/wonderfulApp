@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../interfaces/movie.interface';
 import { environment } from '../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,14 @@ export class MovieService {
   }
 
   emitClick(movie: Movie) {
+    this.movies.forEach(item => {
+      if (item === movie) {
+        item.trash = true;
+      } else {
+        item.trash = false;
+      }
+    });
+    this.eventEmitterBD.emit(this.movies);
     this.eventEmitterDetail.emit(movie);
   }
 
@@ -34,5 +43,12 @@ export class MovieService {
 
   getTopMovies() {
     return this.http.get(environment.urlTop);
+  }
+
+  deleteMovie(movie: Movie) {
+    this.movies = this.movies.filter(item => item !== movie);
+    this.eventEmitterBD.emit(this.movies);
+    this.eventEmitterDetail.emit(undefined);
+    console.dir(this.movies);
   }
 }

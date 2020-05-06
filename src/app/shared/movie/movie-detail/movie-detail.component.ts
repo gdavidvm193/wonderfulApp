@@ -13,6 +13,11 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   constructor(private readonly movieService: MovieService) {
   }
   ngOnInit() {
+    this.movieService.movies.forEach((movie: Movie) => {
+      if (movie.trash === true) {
+        this.movie = movie;
+      }
+    });
     this.subscription = this.movieService.getMovieDetail().subscribe(item => {
       this.newIteration(item);
     });
@@ -23,7 +28,6 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
 
   newIteration(movie: Movie) {
     this.movie = movie;
-    console.dir(movie);
   }
 
 }

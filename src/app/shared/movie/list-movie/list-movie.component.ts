@@ -27,4 +27,5 @@ export class ListMovieComponent implements OnInit, OnDestroy {
   newItem(movie: Array<Movie>) {
     this.movies = movie;
   }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../interfaces/movie.interface';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-top',
@@ -9,14 +10,14 @@ import { Movie } from '../../interfaces/movie.interface';
 })
 export class TopComponent implements OnInit {
 
-  movies;
+  movies: Array<Movie>;
 
   constructor(private readonly movieService: MovieService) { }
 
   ngOnInit() {
-    this.movieService.getTopMovies().subscribe(response => {
-      console.dir(response);
-      this.movies = response.movies;
+    const responseMovie = this.movieService.getTopMovies().pipe(map(({ movies }: any) => movies));
+    responseMovie.subscribe((response) => {
+      this.movies = response;
     });
   }
 

@@ -8,36 +8,58 @@
                         <h5>Add Movie</h5>
                     </div>
                     <div class="col-6 right">
-                        <button class="btn btn-info float-right" (click)="saveMovie(movie)">Save Movie</button>
+                        <button class="btn btn-info float-right" (click)="saveMovie(createForm.value)"
+                            [disabled]="createForm.pristine || createForm.invalid">Save Movie</button>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="superior-form">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="movieTitle">Movie Title</label>
-                                <input type="text" class="form-control" id="movieTitle" [(ngModel)]="movie.title"
-                                    placeholder="Title">
+                    <form [formGroup]="createForm" novalidate>
+                        <div class="superior-form">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="movieTitle">Movie Title</label>
+                                    <input type="text" class="form-control" id="movieTitle" formControlName="title">
+                                </div>
+                                <div *ngIf="createForm.controls['title'].invalid && (createForm.controls['title'].dirty || createForm.controls['title'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="createForm.controls['title'].errors.required">
+                                        Title is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="releaseDate">Release Date</label>
+                                    <input type="date" class="form-control" id="releaseDate" formControlName="release">
+                                </div>
+                                <div *ngIf="createForm.controls['release'].invalid && (createForm.controls['release'].dirty  || createForm.controls['release'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="createForm.controls['release'].errors.required">
+                                        Release Date is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="image">Movie Image</label>
+                                    <input type="file" class="form-control" id="image" accept="image/*"
+                                        (change)="changeListener($event)" formControlName="image">
+                                </div>
+                                <div *ngIf="createForm.controls['image'].invalid && (createForm.controls['image'].dirty  || createForm.controls['image'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="createForm.controls['image'].errors.required">
+                                        Image is required.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="releaseDate">Release Date</label>
-                                <input type="date" class="form-control" id="releaseDate" [(ngModel)]="movie.release">
-                            </div>
+
+                        <div class="col-md-12">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="3"
+                                formControlName="description"></textarea>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="image">Movie Image</label>
-                                <input type="file" class="form-control" id="image" [(ngModel)]="movie.image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" rows="3"
-                            [(ngModel)]="movie.description"></textarea>
-                    </div>
+                    </form>
                 </div>
             </div>
         </main>

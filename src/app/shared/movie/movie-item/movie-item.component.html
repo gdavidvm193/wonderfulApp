@@ -1,9 +1,12 @@
 <div class="card mt-2" (click)=goDetail(movie) *ngIf="(list != 'top')?true:false">
     <div class="card-body">
-        <blockquote class="blockquote mb-0">
+        <blockquote class="blockquote mb-0 col-10">
             <h2>{{movie.title}}</h2>
-            <p>{{movie.release | date:'short'}}</p>
+            <p>Release Date: {{movie.release | date:'MM/dd/yyyy'}}</p>
         </blockquote>
+        <div class="col-2" *ngIf="movie.trash">
+            <img class="card-image" src="../../../../assets/icons/trash.svg" (click)="delete(movie)">
+        </div>
     </div>
 </div>
 <div class="mt-2" *ngIf="(list === 'top')?true:false">
@@ -13,7 +16,7 @@
         </blockquote>
         <blockquote class="blockquote mb-0">
             <h2>{{movie.title}}</h2>
-            <p>{{movie.release | date:'short'}}</p>
+            <p> Release Date: {{movie.release | date:'MM/dd/yyyy'}}</p>
         </blockquote>
     </div>
 </div>
