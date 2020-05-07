@@ -2,8 +2,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../interfaces/movie.interface';
 import { environment } from '../../../environments/environment';
-import { map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -49,6 +47,5 @@ export class MovieService {
     this.movies = this.movies.filter(item => item !== movie);
     this.eventEmitterBD.emit(this.movies);
     this.eventEmitterDetail.emit(undefined);
-    console.dir(this.movies);
   }
 }
