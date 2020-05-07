@@ -1,22 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListMovieComponent } from './list-movie.component';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestService } from '../../../../mocks/core/http-client/http-client.test.service';
 
 describe('ListMovieComponent', () => {
   let component: ListMovieComponent;
-  let fixture: ComponentFixture<ListMovieComponent>;
+  let http: HttpClient;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListMovieComponent ]
-    })
-    .compileComponents();
+      providers: [
+        ListMovieComponent,
+        { provide: HttpClient, useClass: HttpClientTestService },
+      ],
+      declarations: [
+      ],
+    });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListMovieComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.get(ListMovieComponent);
+    http = TestBed.get(HttpClient);
   });
 
   it('should create', () => {

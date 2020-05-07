@@ -1,22 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopComponent } from './top.component';
+import { HttpClientTestService } from '../../../../mocks/core/http-client/http-client.test.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('TopComponent', () => {
   let component: TopComponent;
-  let fixture: ComponentFixture<TopComponent>;
+  let http: HttpClient;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopComponent ]
-    })
-    .compileComponents();
+      providers: [
+        TopComponent,
+        { provide: HttpClient, useClass: HttpClientTestService },
+      ],
+      declarations: [
+      ],
+    });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.get(TopComponent);
+    http = TestBed.get(HttpClient);
   });
 
   it('should create', () => {

@@ -4,19 +4,19 @@ import { SideBarComponent } from './side-bar.component';
 
 describe('SideBarComponent', () => {
   let component: SideBarComponent;
-  let fixture: ComponentFixture<SideBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideBarComponent ]
-    })
-    .compileComponents();
+      providers: [
+        SideBarComponent
+      ],
+      declarations: [
+      ],
+    });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SideBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.get(SideBarComponent);
   });
 
   it('should create', () => {
